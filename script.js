@@ -1,35 +1,48 @@
-/* 1) Следующим переменным присвоить значения 
+/*
+Необходимо выполнить в отдельном JS файле, подключенному к отдельной HTML странице
 
-   - money - любое число “Доход за месяц”,
-   - income - строка с дополнительными доходом (например: фриланс), 
-   - addExpenses - строка с перечислением дополнительных расходов через запятую (например: интернет, такси, коммуналка),
-   - deposit - любое булево значение,
-   - mission - любое число (Какую сумму хотите накопить),
-   - period - число от 1 до 12 (месяцев)
+1) Создать переменную num со значением 266219 (тип данных число)
 
-2) Используя методы и свойства:
+2) Вывести в консоль произведение (умножение) цифр этого числа
+Например: число 123, при помощи javaScript получить каждое цифру ( 1, 2, 3 ) и перемножить их.
+Правильно использовать цикл или методы перебора.
 
-   - Вывести в консоль тип данных значений переменных money, income, deposit;
-   - Вывести в консоль длину строки addExpenses
-   - Вывести в консоль “Период равен (period) месяцев” и “Цель заработать (mission) рублей/долларов/гривен/юани”
-   - Привести строку addExpenses к нижнему регистру и разбить строку на массив, вывести массив в консоль
-   - Объявить переменную budgetDay и присвоить дневной бюджет (доход за месяц / 30)
-   - Вывести в консоль budgetDay
+3) Полученный результат возвести в степень 3, используя только 1 оператор (Math.pow не подходит)
 
-3) Проверить, чтобы все работало и не было ошибок в консоли
+4) Вывести на экран первые 2 цифры полученного числа
 
-4) Добавить папку или ветку со вторым уроком в свой репозиторий на GitHub */
+5) В отдельном репозитории для усложненных уроков, добавить папку или ветку
+   со вторым уроком в свой репозиторий на GitHub
+*/
 
-const money = 25000,
-    income = 'премия',
-    addExperienses = 'интернет, проезд, сигареты',
-    deposit = true,
-    mission = 100000,
-    period = 12;
+// Способ 1
+const num1 = 266219,
+   string1 = num1.toString();
 
-console.log('typeof money: ', typeof money);
-console.log('typeof income: ', typeof income);
-console.log('typeof deposit: ', typeof deposit);
-console.log('addExperienses.length: ', addExperienses.length);
-console.log(`Период равен ${period} месяцев`);
-console.log(`Цель заработать ${mission} рублей`);
+let result1 = 1;
+
+for (let i = 0; i < string1.length; i++) result1 *= string1[i];
+
+// console.log('result 1: ', result1);
+result1 **= 3;
+// console.log('result 1 * 3: ', result1);
+result1 = result1.toString();
+// console.log('result 1: ', result1);
+console.log('result 1 slice: ', result1.slice(0, 2));
+console.log('');
+
+
+// Способ 2
+const num2 = 266219,
+   string2 = num2.toString();
+
+let result2 = 1;
+
+for (let number of string2) result2 *= number;
+
+// console.log('result 2: ', result2);
+result2 **= 3;
+// console.log('result 2 * 3: ', result2);
+result2 = result2.toString();
+// console.log('result 2: ', result2);
+console.log('result 2 slice: ', result2.slice(0, 2));
