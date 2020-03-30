@@ -1,48 +1,74 @@
 /*
-Необходимо выполнить в отдельном JS файле, подключенному к отдельной HTML странице
+1.Переменная lang может принимать 2 значения: 'ru' 'en'.
+Написать условия при котором в зависимости от значения lang будут выводится дни недели на русском или английском языке. Решите задачу
+   a. через if,
+   b. через switch-case
+   c. через многомерный массив без ифов и switch.
 
-1) Создать переменную num со значением 266219 (тип данных число)
-
-2) Вывести в консоль произведение (умножение) цифр этого числа
-Например: число 123, при помощи javaScript получить каждое цифру ( 1, 2, 3 ) и перемножить их.
-Правильно использовать цикл или методы перебора.
-
-3) Полученный результат возвести в степень 3, используя только 1 оператор (Math.pow не подходит)
-
-4) Вывести на экран первые 2 цифры полученного числа
-
-5) В отдельном репозитории для усложненных уроков, добавить папку или ветку
-   со вторым уроком в свой репозиторий на GitHub
+2. У нас есть переменная namePerson. Если значение этой переменной “Артем” то вывести в консоль “директор”, если значение “Максим” то вывести в консоль “преподаватель”, с любым другим значением вывести в консоль “студент”
+Решить задачу с помощью нескольких тернарных операторов, без использования if или switch
 */
 
-// Способ 1
-const num1 = 266219,
-   string1 = num1.toString();
+// Решение для пункта 1
+let lang = prompt('Введите язык (RU или EN)');
+lang = lang.toLowerCase();
+let daysOfTheWeekIf = [
+	['ru', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+	['en', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+];
+let daysOfTheWeekSwitch = [
+	['ru', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+	['en', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+];
+let daysOfTheWeek = [
+	['ru', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+	['en', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+];
 
-let result1 = 1;
+let a,
+	b;
 
-for (let i = 0; i < string1.length; i++) result1 *= string1[i];
+// Вариант А
+if (lang === 'ru') {
+	daysOfTheWeekIf[0].splice(0, 1);
+	a = daysOfTheWeekIf[0].join(', ');
+	console.log('Отрабка if для RU-ru: ', a);
+} else if (lang === 'en') {
+	daysOfTheWeekIf[1].splice(0, 1);
+	a = daysOfTheWeekIf[1].join(', ');
+	console.log('Отрабка if для EN-en: ', a);
+} else {
+	console.log('Ошибка ввода, повторите попытку');
+}
 
-// console.log('result 1: ', result1);
-result1 **= 3;
-// console.log('result 1 * 3: ', result1);
-result1 = result1.toString();
-// console.log('result 1: ', result1);
-console.log('result 1 slice: ', result1.slice(0, 2));
-console.log('');
+
+// Вариант B
+switch (lang) {
+	case 'ru':
+		daysOfTheWeekSwitch[0].splice(0, 1);
+		b = daysOfTheWeekSwitch[0].join(', ');
+		console.log('Отрабка switch для RU-ru: ', b);
+		break;
+	case 'en':
+		daysOfTheWeekSwitch[1].splice(0, 1);
+		b = daysOfTheWeekSwitch[1].join(', ');
+		console.log('Отрабка switch для EN-en: ', b);
+		break;
+	default:
+		console.log('Ошибка ввода, повторите попытку');
+		break;
+}
 
 
-// Способ 2
-const num2 = 266219,
-   string2 = num2.toString();
+// Вариант C
+let item = daysOfTheWeek.filter(item => item[0].startsWith(lang));
+item[0].splice(0, 1);
+let c = item[0].join(', ');
+console.log('Отрабка без условий для RU-ru или EN-en: ', c);
 
-let result2 = 1;
 
-for (let number of string2) result2 *= number;
+// Решение для пункта 2
+const namePerson = prompt('Введите имя');
+namePerson === 'Артем' ? console.log('Директор') : namePerson === 'Максим' ?
+ console.log('Преподаватель') : console.log('Студент');
 
-// console.log('result 2: ', result2);
-result2 **= 3;
-// console.log('result 2 * 3: ', result2);
-result2 = result2.toString();
-// console.log('result 2: ', result2);
-console.log('result 2 slice: ', result2.slice(0, 2));
