@@ -1,42 +1,52 @@
 /*
-1) Создайте функцию, которая принимает 1 аргумент (название произвольное)
+1) Создать массив arr = []
+— Записать в него 7 любых многозначных чисел в виде строк
+— Вывести в консоль только те, что начинаются с цифры 2 или 4 (Должны присутствовать в массиве)
 
-— Если в качестве аргумента передана не строка - функция оповещает об этом пользователя
-— В полученной (как аргумент) строке функция должна убрать все пробелы в начале и в конце
-— Если строка более 30 знаков - то после 30го символа часть текста скрывается и вместо них появляются три точки (...)
+2) Вывести в столбик все простые числа от 1 до 100
+— Статья про простые числа - КЛИК
+— Рядом с каждым числом написать оба делителя данного числа
+    Например: “Делители этого числа: 1 и n”
+
+3) Запушить проект в репозиторий для усложненных заданий на GitHub
 */
 
-const deleteSpaces = str => {
-	const maxSpacesPerSide = 10;
-	for (let i = 0; i < maxSpacesPerSide; i++) {
-		if (str.startsWith(' ')) {
-			str = str.slice(1);
+let arr = [234, 532, 412, 590, 200, 503, 404];
+
+const getEven = () => {
+	let evenArr = [];
+	arr.forEach(item => {
+		item = item.toString();
+		if (item.startsWith('2') || item.startsWith('4')) {
+			evenArr.push(parseFloat(item));
+			return evenArr;
+		} else {
+			return false;
+		}
+	});
+	return evenArr;
+};
+
+console.log(getEven());
+
+const primeNumbers = () => {
+	const n = 100;
+	for (let i = 1; i < n; i++) {
+		if (i % i === 0) {
+			let count = 0;
+			for (let j = 1; j <= i; j++) {
+				if (i % j === 0) {
+					count++;
+				}
+				if (count === 2 && j === i) {
+					console.log(`${i} - Делители этого числа: ${1} и ${i}`);
+				}
+				if (count > 2) {
+					break;
+				}
+			}
 		}
 	}
-	for (let j = 0; j < maxSpacesPerSide; j++) {
-		if (str.endsWith(' ')) {
-			str = str.slice(0, -1);
-		}
-	}
-	return str;
 };
 
-const addDots = str => {
-	if (str.length > 30) {
-		str = deleteSpaces(str.substring(0, 30));
-		return str + '...';
-	}
-};
-
-const check = string => {
-	if (string) {
-		string.toString();
-		deleteSpaces(string);
-		return addDots(string);
-	} else {
-		return ('Введите строку');
-	}
-};
-
-console.log(check(prompt('Введите строку')));
-// Тестовая строка - 'Привет, я строка без пробелов   в начале и в конце и с длинной более 30 символов'
+console.log(primeNumbers());
