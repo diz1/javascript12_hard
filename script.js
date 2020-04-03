@@ -1,52 +1,64 @@
 /*
-1) Создать массив arr = []
-— Записать в него 7 любых многозначных чисел в виде строк
-— Вывести в консоль только те, что начинаются с цифры 2 или 4 (Должны присутствовать в массиве)
-
-2) Вывести в столбик все простые числа от 1 до 100
-— Статья про простые числа - КЛИК
-— Рядом с каждым числом написать оба делителя данного числа
-    Например: “Делители этого числа: 1 и n”
-
-3) Запушить проект в репозиторий для усложненных заданий на GitHub
+	1) Создать массив week и записать в него дни недели в виде строк
+        - Вывести на экран все дни недели
+        - Каждый из них с новой строчки
+        - Выходные дни - курсивом
+        - Текущий день - жирным шрифтом(использовать объект даты)
 */
-
-let arr = [234, 532, 412, 590, 200, 503, 404];
-
-const getEven = () => {
-	let evenArr = [];
-	arr.forEach(item => {
-		item = item.toString();
-		if (item.startsWith('2') || item.startsWith('4')) {
-			evenArr.push(parseFloat(item));
-			return evenArr;
-		} else {
-			return false;
+let week =
+	[
+		{
+			id: 1,
+			name: 'Понедельник'
+		},
+		{
+			id: 2,
+			name: 'Вторник'
+		},
+		{
+			id: 3,
+			name: 'Среда'
+		},
+		{
+			id: 4,
+			name: 'Четверг'
+		},
+		{
+			id: 5,
+			name: 'Пятница'
+		},
+		{
+			id: 6,
+			name: 'Суббота'
+		},
+		{
+			id: 0,
+			name: 'Воскресенье'
 		}
-	});
-	return evenArr;
-};
-
-console.log(getEven());
-
-const primeNumbers = () => {
-	const n = 100;
-	for (let i = 1; i < n; i++) {
-		if (i % i === 0) {
-			let count = 0;
-			for (let j = 1; j <= i; j++) {
-				if (i % j === 0) {
-					count++;
-				}
-				if (count === 2 && j === i) {
-					console.log(`${i} - Делители этого числа: ${1} и ${i}`);
-				}
-				if (count > 2) {
-					break;
-				}
-			}
-		}
+	];
+let div = document.getElementById('week'),
+	day = new Date();
+week.forEach(item => {
+	let template =
+		`
+			<br>
+			${item.name}<br>
+		`;
+	if (item.id === 0 || item.id === 6) {
+		template =
+			`
+				<br>
+				<i>${item.name}</i><br>
+			`;
+		div.insertAdjacentHTML('beforeend', template);
+	} else if (item.id === day.getDay()) {
+		template =
+			`
+				<br>
+				<b>${item.name}</b><br>
+			`;
+		div.insertAdjacentHTML('beforeend', template);
+	} else {
+		div.insertAdjacentHTML('beforeend', template);
 	}
-};
-
-console.log(primeNumbers());
+});
