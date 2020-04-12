@@ -11,6 +11,7 @@ let randomNumberColor = () => {
 	};
 };
 
+
 let getRandomNumberColor = randomNumberColor();
 
 document.body.style.transition = '.2s';
